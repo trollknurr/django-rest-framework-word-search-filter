@@ -28,9 +28,9 @@ class FullWordSearchFilter(BaseFilterBackend):
 
     @staticmethod
     def construct_term(term):
-        return [u" {} ".format(term),
-                u"{} ".format(term),
-                u" {}".format(term),
+        return [" {} ".format(term),
+                "{} ".format(term),
+                " {}".format(term),
                 term]
 
     def filter_queryset(self, request, queryset, view):
