@@ -1,4 +1,5 @@
 # coding:utf-8
+from __future__ import unicode_literals
 import operator
 
 from django.db import models
@@ -24,14 +25,24 @@ class FullWordSearchFilter(BaseFilterBackend):
         return ["{}__icontains".format(field_name),
                 "{}__istartswith".format(field_name),
                 "{}__iendswith".format(field_name),
-                "{}__exact".format(field_name)]
+                "{}__exact".format(field_name),
+                "{}__istartswith".format(field_name),
+                "{}__iendswith".format(field_name),
+                "{}__icontains".format(field_name),
+                "{}__icontains".format(field_name),
+                ]
 
     @staticmethod
     def construct_term(term):
         return [" {} ".format(term),
                 "{} ".format(term),
                 " {}".format(term),
-                term]
+                term,
+                "{}-".format(term),
+                "-{}".format(term),
+                "-{} ".format(term),
+                " {}-".format(term)
+                ]
 
     def filter_queryset(self, request, queryset, view):
         search_fields = getattr(view, 'word_fields', None)
@@ -51,6 +62,8 @@ class FullWordSearchFilter(BaseFilterBackend):
         for orm_lookup in orm_lookups:
             and_query = list()
             for term in search_term:
+                if term.startswith('-') or term.endswith('-'):
+                    term = term.replace('-', '')
                 and_query.append(
                     reduce(operator.or_, [models.Q(**{lookup: prep_term}) for lookup, prep_term in zip(orm_lookup, self.construct_term(term))]))
             lookup_list.append(reduce(operator.and_, and_query))
