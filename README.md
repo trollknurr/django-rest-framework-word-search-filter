@@ -11,7 +11,7 @@ Do not use with default ``filters.SearchFilter`
 
 In your ``settings.py``
 
-    INSTALLED_APPD += ('rest_framework_word_filter', )
+    INSTALLED_APPS += ('rest_framework_word_filter', )
 
 Compatible with python 2.7+, 3.2+, django 1.4+
 
