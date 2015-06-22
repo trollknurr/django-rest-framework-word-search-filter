@@ -7,7 +7,7 @@ Do not use with default ``filters.SearchFilter`
 
 ## Install
 
-    pip install django-rest-framework-word-search-filter
+    pip install djangorestframework-word-filter
 
 In your ``settings.py``
 
