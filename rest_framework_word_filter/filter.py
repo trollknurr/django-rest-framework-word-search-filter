@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import operator
 
 from django.db import models
-from django.utils.six.moves import reduce
+from functools import reduce
 from rest_framework.filters import BaseFilterBackend
 from rest_framework.settings import api_settings
 

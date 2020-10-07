@@ -32,7 +32,7 @@ def get_package_data(package):
 
 setup(
     name='djangorestframework-word-filter',
-    version='0.1.0',
+    version='0.2.0',
     url='https://github.com/trollknurr/django-rest-framework-word-search-filter',
     license='MIT',
     description='By word filter backend for Django REST Framework. No db backend special features (work on all db).',
@@ -51,7 +51,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Topic :: Internet :: WWW/HTTP',
     ]
